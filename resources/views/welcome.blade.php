@@ -7,7 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Tài Liệu Học Tập</title>
-
+        <link rel="shortcut icon" type="image/png" href="{{ asset('icon.png') }}"/>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
