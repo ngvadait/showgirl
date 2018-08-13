@@ -22,6 +22,10 @@
                 height: 100vh;
                 margin: 0;
             }
+            .hide-p {text-decoration: none !important;}
+            .hide-a {
+                color:black !important; text-decoration: none !important;
+            }
         </style>
     </head>
     <body>

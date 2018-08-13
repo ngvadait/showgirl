@@ -1,19 +1,21 @@
 <template>
 	<div class="container">
 		<div class="row">
-			<div v-for="p in photos" class="col-md-4 card" v-bind:id="p.from['id']">
+			<div v-for="p in photos" class="col-md-4 card" v-bind:id="p.id_fb">
 				<!--Card image-->
-				<img v-img v-bind:src="p.full_picture" v-bind:alt="p.from['name']" width="350px" class="card-img-top">
+				<img v-img v-bind:src="p.full_picture" v-bind:alt="p.name_fb" width="350px" class="card-img-top">
 				<!-- Card content -->
 				<br>
-				<div class="">
+				<div>
 				    <!-- Title -->
-				    <img class="circle float-left" :src="imageFB(p.from['id'])" width="50px" alt="" aria-label="" role="img">
+				    <a class="hide-p" :href="urlFB(p.id_fb)" target="_blank">
+				    	<img class="circle float-left" :src="imageFB(p.id_fb)" width="50px" alt="" aria-label="" role="img">
+				    </a>
 					<p class="float-left" style="padding-left:20px;line-height:50px">
-						<a :href="urlFB(p.from['id'])" target="_blank">{{p.from['name']}}</a>
+						<a class="hide-p" :href="urlFB(p.id_fb)" target="_blank">{{p.name_fb}}</a>
 					</p><br><br><br>
 				    <!-- Text -->
-				    <p class="card-text">{{ p.message }}</p>        
+				    <p class="card-text"><a class="hide-a" :href="p.link" target="_blank">{{ p.message }}</a></p>        
 				</div>
 				<br>
 			</div>

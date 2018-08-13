@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
+use Illuminate\Support\Facades\DB;
 
 class PhotoController extends Controller
 {
@@ -14,18 +14,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $id_group = '1173636692750000';
-        $token = env('TOKEN_FB');
-        $url = 'https://graph.facebook.com/'. $id_group .'?fields=feed.limit(10){id,from,message,type,full_picture}&access_token=' . $token;
-        $client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => '',
-            // You can set any number of default request options.
-            // 'timeout'  => 2.0,
-        ]);
-        $response = $client->request('GET', $url);
-        $data = json_decode($response->getBody()->getContents());
-        $datas = $data->feed->data;
+        $datas = DB::table('photos')->select('id_image','id_fb','name_fb','message','link','full_picture','updated_at')->limit(6)->orderBy('updated_at', 'asc')->get();
         return request()->json(200, $datas);
     }
 

@@ -15,6 +15,14 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('id_image');
+            $table->string('id_fb');
+            $table->string('name_fb');
+            $table->text('message');
+            $table->text('link');
+            $table->string('type');
+            $table->text('full_picture');
+            $table->string('updated_time');
             $table->timestamps();
         });
     }

@@ -49910,7 +49910,7 @@ exports = module.exports = __webpack_require__(43)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50400,6 +50400,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 				data: function data() {
@@ -50445,31 +50447,36 @@ var render = function() {
       _vm._l(_vm.photos, function(p) {
         return _c(
           "div",
-          { staticClass: "col-md-4 card", attrs: { id: p.from["id"] } },
+          { staticClass: "col-md-4 card", attrs: { id: p.id_fb } },
           [
             _c("img", {
               directives: [{ name: "img", rawName: "v-img" }],
               staticClass: "card-img-top",
-              attrs: {
-                src: p.full_picture,
-                alt: p.from["name"],
-                width: "350px"
-              }
+              attrs: { src: p.full_picture, alt: p.name_fb, width: "350px" }
             }),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("div", {}, [
-              _c("img", {
-                staticClass: "circle float-left",
-                attrs: {
-                  src: _vm.imageFB(p.from["id"]),
-                  width: "50px",
-                  alt: "",
-                  "aria-label": "",
-                  role: "img"
-                }
-              }),
+            _c("div", [
+              _c(
+                "a",
+                {
+                  staticClass: "hide-p",
+                  attrs: { href: _vm.urlFB(p.id_fb), target: "_blank" }
+                },
+                [
+                  _c("img", {
+                    staticClass: "circle float-left",
+                    attrs: {
+                      src: _vm.imageFB(p.id_fb),
+                      width: "50px",
+                      alt: "",
+                      "aria-label": "",
+                      role: "img"
+                    }
+                  })
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "p",
@@ -50481,9 +50488,10 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      attrs: { href: _vm.urlFB(p.from["id"]), target: "_blank" }
+                      staticClass: "hide-p",
+                      attrs: { href: _vm.urlFB(p.id_fb), target: "_blank" }
                     },
-                    [_vm._v(_vm._s(p.from["name"]))]
+                    [_vm._v(_vm._s(p.name_fb))]
                   )
                 ]
               ),
@@ -50491,7 +50499,16 @@ var render = function() {
               _c("br"),
               _c("br"),
               _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(p.message))])
+              _c("p", { staticClass: "card-text" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "hide-a",
+                    attrs: { href: p.link, target: "_blank" }
+                  },
+                  [_vm._v(_vm._s(p.message))]
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("br")
