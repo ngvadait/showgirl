@@ -3,11 +3,10 @@
 		<div class="row">
 			<div v-for="p in photos" class="col-md-4 card" v-bind:id="p.from['id']">
 				<!--Card image-->
-				<a v-bind:href="p.full_picture" v-bind:title="p.from['name']" class="image-link">
-					<img v-bind:src="p.full_picture" v-bind:alt="p.from['name']" width="350px" class="card-img-top">
-				</a>
+				<img v-img v-bind:src="p.full_picture" v-bind:alt="p.from['name']" width="350px" class="card-img-top">
 				<!-- Card content -->
-				<div class="card-body">
+				<br>
+				<div class="">
 				    <!-- Title -->
 				    <img class="circle float-left" :src="imageFB(p.from['id'])" width="50px" alt="" aria-label="" role="img">
 					<p class="float-left" style="padding-left:20px;line-height:50px">
@@ -16,6 +15,7 @@
 				    <!-- Text -->
 				    <p class="card-text">{{ p.message }}</p>        
 				</div>
+				<br>
 			</div>
 		</div>
 	</div>
