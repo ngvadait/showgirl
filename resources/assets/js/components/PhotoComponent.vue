@@ -19,6 +19,13 @@
 				</div>
 				<br>
 			</div>
+
+			<infinite-loading @infinite="infiniteHandler">
+				<span slot="no-more">
+					Can't get photo
+				</span>
+			</infinite-loading>
+			<!-- <infinite-loading @infinite="infiniteHandler"></infinite-loading> -->
 		</div>
 	</div>
 </template>
@@ -28,18 +35,48 @@
 </style>
 
 <script type="text/javascript">
+	import InfiniteLoading from 'vue-infinite-loading';
 	export default {
 		data(){
             return {
                 photos:{},
             }
         },
+        created(){
+            this.getPhotos();
+        },
 		methods: {
+			getPhotos: function() {
+				axios.get('/photos')
+            	.then((response) => this.photos = response.data.photos)
+            	.catch((error) => console.log(error));
+			},
 			urlFB: function(id) {
 				return 'https://facebook.com/' + id;
 		    },
 		    imageFB: function(id) {
 		    	return 'https://graph.facebook.com/' + id + '/picture?type=large'
+		    },
+		    infiniteHandler: function($state) {
+		    	let limit = this.photos.length + 6;
+		    	axios.get('/photos', { params: { limit: limit } })
+		    	.then(response => {
+		    		this.loadMore($state, response);
+		    	});
+		    },
+		    loadMore: function($state, response) {
+		    	if (response.data.photos.length) {
+		    		this.photos = response.data.photos;
+		    		setTimeout(() => {
+			    		$state.loaded();
+			    	} ,2000);
+
+			    	if (response.data.total == this.photos.length) {
+			    		$state.complete();
+			    	}
+		    	} else {
+		    		$state.complete();
+		    	}
 		    }
 		},
 		computed : {
@@ -48,11 +85,8 @@
 		mounted() {
             
         },
-        created(){
-            axios.get('http://127.0.0.1:8000/photos')
-            .then((response) => this.photos = response.data)
-            .catch((error) => console.log(error));
-            console.log("Tasks Component Loaded...");
-        }
+        components: {
+    		InfiniteLoading,
+  		},
 	};
 </script>

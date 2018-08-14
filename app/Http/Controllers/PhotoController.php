@@ -12,10 +12,13 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datas = DB::table('photos')->select('id_image','id_fb','name_fb','message','link','full_picture','updated_at')->limit(3)->orderBy('updated_at', 'asc')->get();
-        return request()->json(200, $datas);
+        $datas = DB::table('photos')->select('id_image','id_fb','name_fb','message','link','full_picture','updated_at')->orderBy('updated_at', 'asc');
+        return request()->json(200, [
+            'photos' => $datas->take($request->get('limit', 6))->get(),
+            'total' => $datas->count()
+        ]);
     }
 
     /**

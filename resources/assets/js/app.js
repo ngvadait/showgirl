@@ -12,7 +12,7 @@ import VueRouter from 'vue-router'
 import VueImg from 'v-img';
 
 Vue.use(VueImg);
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,5 +32,5 @@ const app = new Vue({
     router,
     data: {
 
-    }
+    },
 });
