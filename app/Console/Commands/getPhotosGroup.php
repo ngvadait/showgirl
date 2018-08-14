@@ -41,6 +41,9 @@ class getPhotosGroup extends Command
      */
     public function handle()
     {
+        $s = microtime(true);
+        $e = microtime(true);
+        $this->info('START JOB: ' . round($e - $s, 2) . " Sec");
         $id_group = '1173636692750000';
         $token = env('TOKEN_FB');
         $url = 'https://graph.facebook.com/'. $id_group .'?fields=feed.limit(300){id,from,message,link,type,full_picture}&access_token=' . $token;
@@ -60,7 +63,8 @@ class getPhotosGroup extends Command
                 $datas = $data;
             }
             if (count($datas->data) == 0) {break;}
-            $this->info("START LOAD: " . $i);
+            $e = microtime(true);
+            $this->info("START LOAD: " . $i . '. Time:  '. round($e - $s, 2) . " Sec");
             foreach ($datas->data as $data) {
                 if ($data->type == 'photo') {
                     $check = DB::table('photos')->select('id_image')->where('id_image', $data->id)->first();
@@ -70,7 +74,7 @@ class getPhotosGroup extends Command
                             'id_fb' => $data->from->id,
                             'name_fb' => $data->from->name,
                             'message' => isset($data->message) ? $data->message : 'no message',
-                            'link' => isset($data->link) ? $data->link : 'no link',
+                            'link' => isset($data->link) ? $data->link : '',
                             'type' => $data->type,
                             'full_picture' => isset($data->full_picture) ? $data->full_picture : 'no full_picture',
                             'updated_time' => $data->updated_time,
@@ -78,7 +82,7 @@ class getPhotosGroup extends Command
                             'updated_at' => Carbon::now()
                         ];
                         DB::table('photos')->insertGetId($value);
-                    } else {
+                    } else if (count($check) == 1) {
                         DB::table('photos')->where('id_image', $data->id)->update([
                             'message' => isset($data->message) ? $data->message : 'no message',
                             'full_picture' => isset($data->full_picture) ? $data->full_picture : 'no full_picture',
@@ -88,7 +92,8 @@ class getPhotosGroup extends Command
                     }
                 }
             }
-            $this->info("END LOAD: " . $i);
+            $e = microtime(true);
+            $this->info("END LOAD: " . $i . '. Time:  '. round($e - $s, 2) . " Sec");
             $i++;
             if (!empty($datas->paging->next)) {
                 $url = $datas->paging->next;
@@ -96,5 +101,7 @@ class getPhotosGroup extends Command
                 break;
             }
         }
+        $e = microtime(true);
+        $this->info('END JOB: ' . round($e - $s, 2) . " Sec");
     }
 }

@@ -14,7 +14,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $datas = DB::table('photos')->select('id_image','id_fb','name_fb','message','link','full_picture','updated_at')->limit(6)->orderBy('updated_at', 'asc')->get();
+        $datas = DB::table('photos')->select('id_image','id_fb','name_fb','message','link','full_picture','updated_at')->limit(3)->orderBy('updated_at', 'asc')->get();
         return request()->json(200, $datas);
     }
 
