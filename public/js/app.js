@@ -50437,7 +50437,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var _this = this;
 
 			axios.get('/photos').then(function (response) {
-				return _this.photos = response.data.photos;
+				return _this.photos = response.data.data;
 			}).catch(function (error) {
 				return console.log(error);
 			});
@@ -50451,14 +50451,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		infiniteHandler: function infiniteHandler($state) {
 			var _this2 = this;
 
-			var limit = this.photos.length + 6;
-			axios.get('/photos', { params: { limit: limit } }).then(function (response) {
+			var limit = this.photos.length / 6 + 1;
+			axios.get('/photos', { params: { page: limit } }).then(function (response) {
 				_this2.loadMore($state, response);
 			});
 		},
 		loadMore: function loadMore($state, response) {
-			if (response.data.photos.length) {
-				this.photos = response.data.photos;
+			if (response.data.data.length) {
+				this.photos = this.photos.concat(response.data.data);
 				setTimeout(function () {
 					$state.loaded();
 				}, 2000);

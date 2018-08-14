@@ -48,7 +48,7 @@
 		methods: {
 			getPhotos: function() {
 				axios.get('/photos')
-            	.then((response) => this.photos = response.data.photos)
+            	.then((response) => this.photos = response.data.data)
             	.catch((error) => console.log(error));
 			},
 			urlFB: function(id) {
@@ -58,15 +58,15 @@
 		    	return 'https://graph.facebook.com/' + id + '/picture?type=large'
 		    },
 		    infiniteHandler: function($state) {
-		    	let limit = this.photos.length + 6;
-		    	axios.get('/photos', { params: { limit: limit } })
+		    	let limit = this.photos.length / 6 + 1;
+		    	axios.get('/photos', { params: { page: limit } })
 		    	.then(response => {
 		    		this.loadMore($state, response);
 		    	});
 		    },
 		    loadMore: function($state, response) {
-		    	if (response.data.photos.length) {
-		    		this.photos = response.data.photos;
+		    	if (response.data.data.length) {
+		    		this.photos = this.photos.concat(response.data.data);
 		    		setTimeout(() => {
 			    		$state.loaded();
 			    	} ,2000);
