@@ -13890,6 +13890,7 @@ module.exports = __webpack_require__(50);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_img__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_backtotop__ = __webpack_require__(58);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13903,8 +13904,10 @@ window.Vue = __webpack_require__(36);
 
 
 
+
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_v_img__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_backtotop__["a" /* default */]);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -49919,7 +49922,7 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50425,6 +50428,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -50513,7 +50519,7 @@ var render = function() {
                 "div",
                 {
                   staticStyle: { background: "#F1F3F8" },
-                  attrs: { "data-aos": "fade-in", "data-aos-delay": "200" }
+                  attrs: { "data-aos": "zoom-in" }
                 },
                 [
                   _c("img", {
@@ -50605,6 +50611,14 @@ var render = function() {
           _c("span", { attrs: { slot: "no-more" }, slot: "no-more" }, [
             _vm._v("\n\t\t\t\tCan't get photo\n\t\t\t")
           ])
+        ]),
+        _vm._v(" "),
+        _c("back-to-top", [
+          _c(
+            "button",
+            { staticClass: "btn btn-info btn-sm", attrs: { type: "button" } },
+            [_vm._v("Back to Top")]
+          )
         ])
       ],
       2
@@ -51145,6 +51159,243 @@ exports.push([module.i, "[data-aos][data-aos][data-aos-duration=\"50\"],body[dat
 
 // exports
 
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BackToTop_vue__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BackToTop_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__BackToTop_vue__);
+ 
+
+/**
+ * Check why can't use () => {}
+ */
+__WEBPACK_IMPORTED_MODULE_0__BackToTop_vue___default.a.install = function (Vue, options) {
+  Vue.component(__WEBPACK_IMPORTED_MODULE_0__BackToTop_vue___default.a.name, __WEBPACK_IMPORTED_MODULE_0__BackToTop_vue___default.a)
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__BackToTop_vue___default.a);
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(60)
+}
+var normalizeComponent = __webpack_require__(47)
+/* script */
+var __vue_script__ = __webpack_require__(62)
+/* template */
+var __vue_template__ = __webpack_require__(63)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "node_modules\\vue-backtotop\\src\\BackToTop.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ea3c58b2", Component.options)
+  } else {
+    hotAPI.reload("data-v-ea3c58b2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(61);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(45)("4eee2a27", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ea3c58b2\",\"scoped\":false,\"hasInlineConfig\":true}!./styles.css", function() {
+     var newContent = require("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ea3c58b2\",\"scoped\":false,\"hasInlineConfig\":true}!./styles.css");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(44)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.back-to-top-fade-enter-active, .back-to-top-fade-leave-active {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.back-to-top-fade-enter, .back-to-top-fade-leave-to{\n  opacity: 0;\n}\n.vue-back-to-top{\n  position: fixed;\n  z-index: 1000;\n  cursor:pointer;\n}\n.vue-back-to-top .default {\n  width: 160px;\n  color: #ffffff;\n  text-align: center;\n  line-height: 30px;\n  background-color: #f5c85c;\n  border-radius: 3px;\n}\n.vue-back-to-top .default span{\n  color:#ffffff;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'BackToTop',
+  props: {
+    text: {
+      type: String,
+      default: 'Voltar ao topo'
+    },
+    visibleoffset: {
+      type: [String, Number],
+      default: 600
+    },
+    right: {
+      type: String,
+      default: '30px'
+    },
+    bottom: {
+      type: String,
+      default: '40px'
+    }
+  },
+  data: function data() {
+    return {
+      visible: false
+    };
+  },
+  mounted: function mounted() {
+    window.smoothscroll = function () {
+      var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      if (currentScroll > 0) {
+        window.requestAnimationFrame(window.smoothscroll);
+        window.scrollTo(0, Math.floor(currentScroll - currentScroll / 5));
+      }
+    };
+    window.addEventListener('scroll', this.catchScroll);
+  },
+  destroyed: function destroyed() {
+    window.removeEventListener('scroll', this.catchScroll);
+  },
+
+  methods: {
+    /**
+     * Catch window scroll event 
+     * @return {void}
+     */
+    catchScroll: function catchScroll() {
+      this.visible = window.pageYOffset > parseInt(this.visibleoffset);
+    },
+
+    /**
+     * The function who make the magics
+     * @return {void}
+     */
+    backToTop: function backToTop() {
+      window.smoothscroll();
+    }
+  }
+});
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "back-to-top-fade" } }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        staticClass: "vue-back-to-top",
+        style: "bottom:" + this.bottom + ";right:" + this.right + ";",
+        on: { click: _vm.backToTop }
+      },
+      [
+        _vm._t("default", [
+          _c("div", { staticClass: "default" }, [
+            _c("span", [
+              _vm._v("\n          " + _vm._s(_vm.text) + "\n        ")
+            ])
+          ])
+        ])
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ea3c58b2", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

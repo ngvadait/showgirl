@@ -10,9 +10,11 @@ require('./bootstrap');
 window.Vue = require('vue');
 import VueRouter from 'vue-router';
 import VueImg from 'v-img';
+import BackToTop from 'vue-backtotop';
 
 Vue.use(VueImg);
 Vue.use(VueRouter);
+Vue.use(BackToTop);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

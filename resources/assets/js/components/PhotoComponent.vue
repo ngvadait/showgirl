@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div v-for="p in photos" class="col-md-4" style="margin: 7px 0px;" v-bind:id="p.id_fb">
-				<div style="background: #F1F3F8" data-aos="fade-in" data-aos-delay="200">
+				<div style="background: #F1F3F8" data-aos="zoom-in">
 					<!--Card image-->
 					<img v-img v-bind:src="p.full_picture" v-bind:alt="p.name_fb" style="margin-bottom: 10px" width="100%">
 					<!-- Card content -->
@@ -26,6 +26,9 @@
 					Can't get photo
 				</span>
 			</infinite-loading>
+			<back-to-top>
+			  	<button type="button" class="btn btn-info btn-sm">Back to Top</button>
+			</back-to-top>	
 			<!-- <infinite-loading @infinite="infiniteHandler"></infinite-loading> -->
 		</div>
 	</div>
