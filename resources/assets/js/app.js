@@ -8,7 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 import VueImg from 'v-img';
 
 Vue.use(VueImg);
