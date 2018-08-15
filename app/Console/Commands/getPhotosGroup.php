@@ -52,6 +52,7 @@ class getPhotosGroup extends Command
             // 'timeout'  => 2.0,
         ]);
         $flag = true;
+        $flag_2 = true;
         $i = 1;
         while (true) {
             $response = $client->request('GET', $url);
@@ -67,29 +68,26 @@ class getPhotosGroup extends Command
             $this->info("START LOAD: " . $i . '. Time:  '. round($e - $s, 2) . " Sec");
             foreach ($datas->data as $data) {
                 if ($data->type == 'photo') {
-                    $check = DB::table('photos')->select('id_image')->where('id_image', $data->id)->first();
-                    if (count($check) == 0) {
-                        $value = [
-                            'id_image' => $data->id,
-                            'id_fb' => $data->from->id,
-                            'name_fb' => $data->from->name,
-                            'message' => isset($data->message) ? $data->message : 'no message',
-                            'link' => isset($data->link) ? $data->link : '',
-                            'type' => $data->type,
-                            'full_picture' => isset($data->full_picture) ? $data->full_picture : 'no full_picture',
-                            'updated_time' => $data->updated_time,
-                            'created_at' => Carbon::now(),
-                            'updated_at' => Carbon::now()
-                        ];
-                        DB::table('photos')->insertGetId($value);
-                    } else if (count($check) == 1) {
-                        DB::table('photos')->where('id_image', $data->id)->update([
-                            'message' => isset($data->message) ? $data->message : 'no message',
-                            'full_picture' => isset($data->full_picture) ? $data->full_picture : 'no full_picture',
-                            'updated_time' => $data->updated_time,
-                            'updated_at' => Carbon::now()
-                        ]);
+                    if ($flag_2 == true) {
+                        $num_row = DB::table('photos')->count();
+                        if ($num_row > 0) {
+                            DB::table('photos')->delete();
+                        }
+                        $flag_2 = false;
                     }
+                    $value = [
+                        'id_image' => $data->id,
+                        'id_fb' => $data->from->id,
+                        'name_fb' => $data->from->name,
+                        'message' => isset($data->message) ? $data->message : 'no message',
+                        'link' => isset($data->link) ? $data->link : '',
+                        'type' => $data->type,
+                        'full_picture' => isset($data->full_picture) ? $data->full_picture : 'no full_picture',
+                        'updated_time' => $data->updated_time,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
+                    ];
+                    DB::table('photos')->insertGetId($value);
                 }
             }
             $e = microtime(true);

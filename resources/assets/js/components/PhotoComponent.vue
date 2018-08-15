@@ -21,15 +21,11 @@
 				<br>
 			</div>
 
-			<infinite-loading @infinite="infiniteHandler">
-				<span slot="no-more">
-					Can't get photo
-				</span>
-			</infinite-loading>
+			<infinite-loading @infinite="infiniteHandler"></infinite-loading>
 			<back-to-top>
-			  	<button type="button" class="btn btn-info btn-sm">Back to Top</button>
+			  	<img src="/arrow_up.png" width="40px" alt="">
 			</back-to-top>	
-			<!-- <infinite-loading @infinite="infiniteHandler"></infinite-loading> -->
+			
 		</div>
 	</div>
 </template>
@@ -77,7 +73,6 @@
 		    		setTimeout(() => {
 			    		$state.loaded();
 			    	} ,1000);
-
 			    	if (response.data.total == this.photos.length) {
 			    		$state.complete();
 			    	}
@@ -87,7 +82,6 @@
 		    }
 		},
 		computed : {
-
 		},
 		mounted() {
             
