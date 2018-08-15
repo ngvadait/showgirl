@@ -43,7 +43,7 @@ class getPhotosGroup extends Command
     {
         $s = microtime(true);
         $e = microtime(true);
-        $this->info('START JOB: ' . round($e - $s, 2) . " Sec");
+        $this->info(Carbon::now() .'. START JOB: ' . round($e - $s, 2) . " Sec");
         $id_group = '1173636692750000';
         $token = env('TOKEN_FB');
         $url = 'https://graph.facebook.com/'. $id_group .'?fields=feed.limit(300){id,from,message,link,type,full_picture}&access_token=' . $token;
@@ -100,6 +100,6 @@ class getPhotosGroup extends Command
             }
         }
         $e = microtime(true);
-        $this->info('END JOB: ' . round($e - $s, 2) . " Sec");
+        $this->info(Carbon::now() .'. END JOB: ' . round($e - $s, 2) . " Sec");
     }
 }
