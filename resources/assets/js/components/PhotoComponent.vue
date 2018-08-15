@@ -23,7 +23,7 @@
 
 			<infinite-loading @infinite="infiniteHandler"></infinite-loading>
 			<back-to-top>
-			  	<img src="/arrow_up.png" width="40px" alt="">
+			  	<img src="/arrow_up.png" width="25px" alt="">
 			</back-to-top>	
 			
 		</div>

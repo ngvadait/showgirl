@@ -7,10 +7,10 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Tài Liệu Học Tập</title>
-        <link rel="shortcut icon" type="image/png" href="{{ asset('icon.png') }}"/>
+        <link rel="shortcut icon" type="image/png" href="/icon.png"/>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" type="text/css" href="/css/app.css">
 
         <!-- Styles -->
         <style>
@@ -32,6 +32,6 @@
         <div id="app">
             <photos></photos>
         </div>
-        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
     </body>
 </html>
