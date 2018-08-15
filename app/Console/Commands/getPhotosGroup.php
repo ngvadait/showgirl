@@ -79,10 +79,10 @@ class getPhotosGroup extends Command
                         'id_image' => $data->id,
                         'id_fb' => $data->from->id,
                         'name_fb' => $data->from->name,
-                        'message' => isset($data->message) ? $data->message : 'no message',
+                        'message' => isset($data->message) ? $data->message : '',
                         'link' => isset($data->link) ? $data->link : '',
                         'type' => $data->type,
-                        'full_picture' => isset($data->full_picture) ? $data->full_picture : 'no full_picture',
+                        'full_picture' => isset($data->full_picture) ? $data->full_picture : '',
                         'updated_time' => $data->updated_time,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now()
