@@ -67,7 +67,7 @@ class getPhotosGroup extends Command
             $e = microtime(true);
             $this->info("START LOAD: " . $i . '. Time:  '. round($e - $s, 2) . " Sec");
             foreach ($datas->data as $data) {
-                if ($data->type == 'photo') {
+                if ($data->type == 'photo' && isset($data->message)) {
                     if ($flag_2 == true) {
                         $num_row = DB::table('photos')->count();
                         if ($num_row > 0) {
@@ -79,10 +79,10 @@ class getPhotosGroup extends Command
                         'id_image' => $data->id,
                         'id_fb' => $data->from->id,
                         'name_fb' => $data->from->name,
-                        'message' => isset($data->message) ? $data->message : '',
-                        'link' => isset($data->link) ? $data->link : '',
+                        'message' => $data->message,
+                        'link' => $data->link,
                         'type' => $data->type,
-                        'full_picture' => isset($data->full_picture) ? $data->full_picture : '',
+                        'full_picture' => $data->full_picture,
                         'updated_time' => $data->updated_time,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now()
