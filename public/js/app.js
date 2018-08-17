@@ -51360,7 +51360,7 @@ var render = function() {
         _c("infinite-loading", { on: { infinite: _vm.infiniteHandler } }),
         _vm._v(" "),
         _c("back-to-top", [
-          _c("img", { attrs: { src: "/arrow_up.png", width: "25px", alt: "" } })
+          _c("img", { attrs: { src: "/arrow_up.png", width: "30px", alt: "" } })
         ])
       ],
       2
